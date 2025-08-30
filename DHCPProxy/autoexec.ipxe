@@ -1,0 +1,49 @@
+#!ipxe
+
+# Copyright Deployment Live LLC, All Rights Reserved
+
+# This script is called during autoboot if force_filename is not set.
+
+#######################################################
+
+# Fill in this section if you have a local MDT/PSD server
+# The menu item will appear on the Advanced page of the CloudBoot menu
+
+set CustomerSuppliedWinPE Local Contoso MDT Server
+set CustomerSuppliedWinPE_bootfiles http://mdtserver1.corp.contoso.com/mdt/winpe
+set CustomerSuppliedWinPE_bootwim  http://mdtserver1.corp.contoso.com/mdt/winpe/boot.wim
+set CustomerSuppliedWinPE_hash D7395CFFDA6FC088527457898416BFA4F40DF0E52ACF00FD33348EB04DD03B41
+
+#######################################################
+
+# Fill in this section to auto-populate the answers for OSDCloud
+
+# We can launch directly into OSD Boot, or disable and select "Install OSD" on first iPXE Page.
+# set deploymentlivemenu osdboot  # Not recommended for Production use, Very DANGEROUS.
+
+# OSD Behaviour
+set osdcloud_zti true   # Fully Automated
+set osdcloud_fw false   # DO not update firmware in OSDCloud
+set osdcloud_name Contoso-%Rand:5%
+set osdcloud_final reboot     # Reboot when done with OSD in WinPE and boot into Full OS
+
+# Windows Version
+set osdcloud_version 11
+set osdcloud_build 24H2
+iseq ${buildarch} arm64 && set osdcloud_arch Arm64 || set osdcloud_arch x64
+set osdcloud_edition Pro
+set osdcloud_activate Retail
+isset ${efi/PlatformLang:string} && set osdcloud_language ${efi/PlatformLang:string} || set osdcloud_language en-US
+
+set osdcloud_ppkg http://mdtserver1.corp.contoso.com/mdt/Contoso.ppkg
+
+#######################################################
+# Boot to the cloud
+
+chain https://home.keithga.com:8050/boot/cloudboot.ipxe ||
+chain https://home.keithga.com/boot/cloudboot.ipxe ||
+
+prompt Did not boot
+
+shell
+
