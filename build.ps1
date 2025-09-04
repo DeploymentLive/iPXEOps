@@ -302,7 +302,7 @@ foreach ( $Machine in $TargetMachines ) {
     }
         #>
 
-    foreach ( $dir in @('dhcpproxy','boot','Block','HP') ) {
+    foreach ( $dir in @('boot','Block','HP') ) {
         robocopy /mir /np /ndl /xx /ipg:1 "$TargetDir\$Dir" "$($Machine.TargetFolder)\$Dir" /xf *Paid* /xd *PAID* | write-verbose
     }
 }
