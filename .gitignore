@@ -1,0 +1,6 @@
+Build/*
+Notes/*
+Certs/*
+*.localonly.ps1
+HP/Deploy-HPSureRecovery.ps1
+/Github/Crossusertrust*.crt

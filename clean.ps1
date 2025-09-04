@@ -1,0 +1,1 @@
+remove-item "$PSscriptRoot\Build" -recurse -force 
