@@ -20,19 +20,36 @@ param (
     ),
     $Packages = @(
         'http://www.tinycorelinux.net/16.x/x86_64/tcz/dnsmasq.tcz'
-        'http://www.tinycorelinux.net/16.x/x86_64/tcz/dnsmasq.tcz.md5.txt'
         'http://www.tinycorelinux.net/16.x/x86_64/tcz/nano.tcz'
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/nano-locale.tcz'
+
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/ncursesw.tcz'
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/libzstd.tcz'
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/bzip2-lib.tcz'
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/liblzma.tcz'
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/file.tcz'
+
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/dnsmasq.tcz.md5.txt'
         'http://www.tinycorelinux.net/16.x/x86_64/tcz/nano.tcz.md5.txt'
-    ),
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/nano-locale.tcz.md5.txt'
+
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/ncursesw.tcz.md5.txt'
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/libzstd.tcz.md5.txt'
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/bzip2-lib.tcz.md5.txt'
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/liblzma.tcz.md5.txt'
+        'http://www.tinycorelinux.net/16.x/x86_64/tcz/file.tcz.md5.txt'
+
+        ),
     $OtherFiles = @(
         @{ path = '~/source\repos\ipxebuilder\build\signed\snp_CA_x64.efi' ; dest = '/tftpboot/snp_x64.efi' }
         @{ path = '~/source\repos\ipxebuilder\build\signed\snp_CA_aa64.efi' ; dest = '/tftpboot/snp_aa64.efi' }
         @{ path =     "$PSScriptRoot/dnsmasq.conf" ; dest = '/etc/dnsmasq.conf' }
-        @{ path =     "$PSScriptRoot/bootlocal.sh" ; dest = '/opt/bootlocal.sh' }
+        @{ path =     "$PSScriptRoot/bootsync.sh" ; dest = '/opt/bootsync.sh' }
+        @{ path =     "$PSScriptRoot/menu.sh" ; dest = '/usr/bin/menu.sh' }
         @{ path = "$PSScriptRoot/autoexec.ipxe" ; dest = '/tftpboot/autoexec.ipxe' }
     ),
 
-    [switch]$Fast,
+    [switch]$Fast = $true,
     [switch]$forcedownload,
     [string]$tmpPath = '/tmp/tclbuild'
 
@@ -104,6 +121,12 @@ foreach ( $file in $OtherFiles ) {
     wsl -u root -- cp "$tmpPath/$( split-path $file.path -leaf )"  "$tmpPath/extract$($file.dest)" --force
 }
 
+wsl.exe -u root -- echo "/usr/bin/menu.sh" `>`> "$tmpPath/extract/etc/skel/.profile"
+
+wsl -u root -- chmod 755 "$tmpPath/extract/usr/bin/menu.sh"
+wsl -u root -- chmod 666 "$tmpPath/extract/tftpboot/autoexec.ipxe"
+wsl -u root -- dos2unix "$tmpPath/extract/tftpboot/autoexec.ipxe"
+
 #endregion
 
 #region create newc filesystem
@@ -120,8 +143,3 @@ if ( -not $Fast.IsPresent ) {
 }
 
 #endregion
-
-new-item -ItemType Directory -Path "$PSScriptRoot\Build\dhcpproxy"
-copy-item \\wsl.localhost\ubuntu\tmp\tclbuild\vmlinuz64,\\wsl.localhost\ubuntu\tmp\tclbuild\tinycore.gz -Destination "$PSScriptRoot\Build\dhcpproxy"
-
-write-host "done"
