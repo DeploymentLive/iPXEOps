@@ -120,6 +120,9 @@ sub linuxlive
     set squash_url https://github.com/netbootxyz/ubuntu-squash/releases/download/22.04.5-36909c4f/filesystem.squashfs
     set kernel_url https://github.com/netbootxyz/ubuntu-squash/releases/download/22.04.5-36909c4f/
 
+    # BUGBUG https://github.com/DeploymentLive/iPXEOps/issues/3
+    set cmdline ip=${ip}::${gateway}:${netmask}:myclient::off:${dns}
+
     call LoadLinux ${kernel_url} ${squash_url} ${ipxeServer}/shimx64.efi
 
     call SetBackgroundPNG Logo.png
