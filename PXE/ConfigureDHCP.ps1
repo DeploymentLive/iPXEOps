@@ -137,10 +137,3 @@ if ( ! ( Get-DhcpServerv4OptionValue -scopeid $Scope.ScopeId -PolicyName 'iPXE' 
 }
 
 #endregion
-
-#region Set default options???
-
-# Set-DhcpServerv4OptionValue -OptionId 66 -Value $TFTPServer -ComputerName $Server -ScopeId $Scope
-# Set-DhcpServerv4OptionValue -OptionId 67 -Value "undionly.kpxe" -ComputerName $Server -ScopeId $Scope
-
-#endregion

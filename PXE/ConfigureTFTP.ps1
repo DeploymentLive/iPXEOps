@@ -13,7 +13,7 @@
 [cmdletbinding()]
 param(
     [parameter(mandatory)]
-    $BuildPath
+    $Path
     )
 
 #region Prepare Paths
@@ -47,13 +47,10 @@ start-service WDSServer
 
 #region Copy iPXE binaries
 
-copy-item -force "$BuildPath\Signed\snp_ca_aa64.efi" "$TFTPBoot\arm64\snp.efi"
-copy-item -force "$BuildPath\Signed\snp_ca_x64.efi" "$TFTPBoot\x64uefi\snp.efi"
+copy-item -force "$Path\snp_aa64.efi" "$TFTPBoot\arm64\snp.efi"
+copy-item -force "$Path\snp_64.efi" "$TFTPBoot\x64uefi\snp.efi"
 
-copy-item -force "$BuildPath\Unsigned\undionly.kpxe" "$TFTPBoot\undionly.kpxe"
-
-# copy-item -force "$BuildPath\Unsigned\snp_aa32.efi" "$TFTPBoot\arm\snp.efi"
-# copy-item -force "$BuildPath\Unsigned\snp_x86.efi" "$TFTPBoot\x86uefi\snp.efi"
+# copy-item -force "$Path\undionly.kpxe" "$TFTPBoot\undionly.kpxe"
 
 #endregion
 
