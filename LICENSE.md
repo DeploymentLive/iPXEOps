@@ -1,10 +1,10 @@
 # End User License Agreement 
 
-Deployment Live Cloud Ready Recovery and Deployment
+Deployment Live Cloud Ready Deployment and Recovery
 
 ## Introduction
 
-This End-User License Agreement (this “EULA”) is between **Deployment Live LLC**, a Washington limited liability company (“Licensor”), and each legal entity or natural person (hereafter referred to as “you,” “your” or other appropriate variation thereof) who uses or accesses the **Deployment Live Cloud Ready Recovery and Deployment** (the “Software”). This EULA governs your use of the Software provided by the Licensor. By using the Software, you agree to be bound by the terms of this EULA.
+This End-User License Agreement (this “EULA”) is between **Deployment Live LLC**, a Washington limited liability company (“Licensor”), and each legal entity or natural person (hereafter referred to as “you,” “your” or other appropriate variation thereof) who uses or accesses the **Deployment Live Cloud Ready Deployment and Recovery** (the “Software”). This EULA governs your use of the Software provided by the Licensor. By using the Software, you agree to be bound by the terms of this EULA.
 
 ## License Grant
 Licensor grants you a revocable, non-exclusive, non-transferable, limited license to download, install, and use any number of copies of the Software on your devices, strictly in accordance with the terms of this Agreement.
