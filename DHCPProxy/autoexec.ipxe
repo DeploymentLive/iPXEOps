@@ -16,9 +16,9 @@
 # Fill in this section to auto-populate settings answers for OSDCloud
 
 # OSD Behaviour
-set osdcloud_zti true   # Fully Automated
-set osdcloud_final reboot     # Reboot when done with OSD in WinPE and boot into Full OS
-set osdcloud_ppkg http://mdtserver1.corp.contoso.com/mdt/Contoso.ppkg
+# set osdcloud_zti true   # Fully Automated
+# set osdcloud_final reboot     # Reboot when done with OSD in WinPE and boot into Full OS
+# set osdcloud_ppkg http://mdtserver1.corp.contoso.com/mdt/Contoso.ppkg
 
 #######################################################
 # Boot to the cloud
