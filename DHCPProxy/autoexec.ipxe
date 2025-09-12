@@ -10,7 +10,6 @@
 
 # set CustomerSuppliedWinPE Local Contoso MDT Server
 # set CustomerSuppliedWinPE_bootwim  http://mdtserver1.corp.contoso.com/mdt/winpe/boot.wim
-# set CustomerSuppliedWinPE_hash D7395CFFDA6FC088527457898416BFA4F40DF0E52ACF00FD33348EB04DD03B41
 
 #######################################################
 # Fill in this section to auto-populate settings answers for OSDCloud

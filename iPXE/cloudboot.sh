@@ -230,11 +230,6 @@ sub tools_localwinpe
         return
     end if
     
-    if ( NOT isset ${CustomerSuppliedWinPE_hash} )
-        prompt ERROR: CustomerSuppliedWinPE_hash variable not set, cannot continue. Press any key to return to Tools Menu...
-        return
-    end if
-
     set i:int32 0
     while ( isset ${CustomerSuppliedWinPE_ExtraFiles${i}} )
         echo load ${CustomerSuppliedWinPE_ExtraFiles${i}}
@@ -242,7 +237,7 @@ sub tools_localwinpe
         inc i ||
     wend
     
-    call LoadWinPE ${CustomerSuppliedWinPE_bootfiles} ${CustomerSuppliedWinPE_bootwim} ${CustomerSuppliedWinPE_hash}
+    call LoadWinPE ${CustomerSuppliedWinPE_bootfiles} ${CustomerSuppliedWinPE_bootwim} https
 
 end sub 
 
