@@ -208,7 +208,7 @@ sub tools_dhcpproxy
 
     set proxybase ${ipxeServer}/dhcpproxy
     imgfree ||
-    kernel ${proxybase}/vmlinuz64 loglevel=3 initrd=initrd.magic ip=${ip} ||
+    kernel ${proxybase}/vmlinuz64 loglevel=3 initrd=initrd.magic ${dhcpproxy_args} ||
     initrd ${proxybase}/tinycore.gz ||
     boot ||
 
