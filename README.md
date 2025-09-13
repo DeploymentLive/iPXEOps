@@ -1,13 +1,24 @@
 # Deployment Live iPXE Operations
 
-Deployment Live PXE Operations files. 
+Deployment Live iPXE Cloud Ready Deployment and Recovery
 
-Primarily used to construct teh `iPXE\cloudboot.sh` script and all associated tools.
+The tools and scripts found in this git repo are primarily used to construct the
+**Deployment Live iPXE Cloud Ready Deployment and Recovery** site.
+
+Most documentation can be found here:
+
+* [Users Guide](Docs/usersguide.md)
+* [Evaluation Guide](Docs/EvalGuide.md)
+* [Administrators Guide](Docs/AdminGuide.md)
+  * [Admin AutoExec.ipxe](Docs/admin-autoexec.md)
+  * [Admin DHCP Proxy](Docs/admin-dhcpproxy.md)
+* [Frequently Asked Questions](Docs/faqguide.md)
 
 ## Folders:
 
  * `Block` - Scripts used to create Block Devices for deployment (CD/DVD images)
  * `DHCPProxy` - Scripts used to Create DHCP Proxy system for Tiny Core Linux
+ * `Docs` - Documentation for the Solution
  * `Github` - Used to cross sign certs for Websites (Example Use only)
  * `OEM` - Scripts used to Manage Provisioning of various OEM machines
  * `https` - Scripts used to Sign Web Certs (Example use only)

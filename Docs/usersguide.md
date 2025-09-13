@@ -8,7 +8,7 @@
   - [Staring the Recovery Process](#staring-the-recovery-process)
     - [Running a backup Operating System](#running-a-backup-operating-system)
     - [Installing a New Windows Operating System](#installing-a-new-windows-operating-system)
-  - [Fin](#fin)
+  - [Thanks!](#thanks)
   - [More resources](#more-resources)
 
 
@@ -140,7 +140,7 @@ We use [OSDCloud](https://www.osdeploy.com/) to re-image machines. Thanks Dave!
 
 OSD Cloud can be configured by your IT department to install Windows, Hardware Drivers, and other important Line of Business Apps, all automatically!
 
-## Fin
+## Thanks!
 
 Hopefully this should help you get started in restoring your machine. 
 
@@ -150,7 +150,9 @@ info@deploymentlive.com
 
 ## More resources
 
+* [Users Guide](usersguide.md)
 * [Evaluation Guide](EvalGuide.md)
 * [Administrators Guide](AdminGuide.md)
-  * [AutoExec.ipxe Guide](autoexec.md)
+  * [Admin AutoExec.ipxe](admin-autoexec.md)
+  * [Admin DHCP Proxy](admin-dhcpproxy.md)
 * [Frequently Asked Questions](faqguide.md)
