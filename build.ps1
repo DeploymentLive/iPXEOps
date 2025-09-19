@@ -263,7 +263,7 @@ foreach ( $ISOImage in $ISOImages ) {
     $ISOImage | write-verbose 
     $TargetISO = "$TargetDir\Block\$($ISOImage.Name).iso"
     if ( -not ( test-path $TargetISO )) {
-        write-verbose "Build $ISOImage"
+        write-verbose "Build ISO $TargetISO"
 
         remove-item $TargetISO -ErrorAction SilentlyContinue
         & $ScriptRoot\block\new-iso.ps1 -Path $TargetISO -files $ISOImage.files 

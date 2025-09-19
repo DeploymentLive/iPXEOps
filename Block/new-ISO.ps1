@@ -57,11 +57,11 @@ foreach ( $file in $files ) {
 
     if ( $File.containskey('path') ) {
         write-verbose "Copy file $($File.Path) to $($File.destination)"
-        $CDBuilder.AddFile($File.destination,$file.Path) | write-verbose
+        $CDBuilder.AddFile($File.destination,$file.Path) | out-string | write-verbose
     }
     elseif ( $File.containskey('text') ) {
         write-verbose "Copy text $($File.text) to $($File.destination)"
-        $CDBuilder.AddFile($File.destination, [Text.Encoding]::ASCII.GetBytes($file.text) ) | Write-verbose
+        $CDBuilder.AddFile($File.destination, [Text.Encoding]::ASCII.GetBytes($file.text) ) | out-string | Write-verbose
     }
 }
 
@@ -69,6 +69,7 @@ foreach ( $file in $files ) {
 
 #region Build
 
+write-verbose "Close out ISO image"
 $CDBuilder.Build($Path)
 $ReadStream.Close()
 
