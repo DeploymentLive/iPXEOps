@@ -47,7 +47,7 @@ We have you covered.
 
 ## Walk Through
 
-`Future: Video`
+[![Introduction](media/evalstart.png)](https://www.youtube.com/watch?v=jTNvMBDL1tA)
 
 ### Create a USB Boot Key.
 
@@ -136,7 +136,7 @@ Let's boot up the new Virtual Machine. Once we see the Main Menu, let's select *
 
 Once we are within WinPE, we now have access to a command window, and can perform repairs.
 
-`FUTURE: Planning is under way for some end-user ready tools for WinPE. This should include BitLocker unlock portals, and other tools. Please let us know if you have any suggestions or requirements.`
+<!-- FUTURE: Planning is under way for some end-user ready tools for WinPE. This should include BitLocker unlock portals, and other tools. Please let us know if you have any suggestions or requirements. -->
 
 
 ### Scenario 3 - Full Wipe.
@@ -163,7 +163,7 @@ the era of true network recovery is here.
 ### The Fine Print...
 
 There is one caveat, the **Deployment Live iPXE** secure-boot signed binaries will only trust the **Deployment Live CA** HTTPS TLS/SSL Certificate. 
-This allows us to connect to the https://boot.deploymentlive.com site and a few others, but no other HTTPS encrypted sites are supported.
+This allows us to connect to the https://boot.deploymentlive.com:8050 site and a few others, but no other HTTPS encrypted sites are supported.
 
 This shouldn't be a problem if you are running internally, on a private network, just connect to your un-encrypted HTTP web server. 
 
@@ -171,7 +171,9 @@ The Free version of **Deployment Live iPXE** is not intended to connect up to ot
 
 ## What if I want to do more
 
-In practical terms, iPXE can be use to connect to the public https://boot.deploymentlive.com site with encrypted HTT
+In practical terms, iPXE can be use to connect to the public https://boot.deploymentlive.com:8050 site with encrypted HTTPS, 
+but if you want to do more then you may need your site trusted with Deployment Live free version, or our Enterprise version. 
+Please contact us at info@deploymentlive.com
 
 ### Extending the existing public cloud to your internal site. 
 

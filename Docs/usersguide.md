@@ -26,7 +26,7 @@ iPXE can be started quickly over the network, and then loads other powerful tool
 Of course, **Deployment Live iPXE Cloud Ready Deployment and Recovery** is very powerful, but we recommend that you only perform 
 certain tasks under the direct guidance of your IT department, as some of the tasks can be destructive. 
 
-<!--Future: How-to Video -->
+[![Introduction](media/userstart.png)](https://youtu.be/OdLZkTihovw)
 
 ## What you need to get started
 

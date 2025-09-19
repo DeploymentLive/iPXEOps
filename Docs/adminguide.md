@@ -154,8 +154,8 @@ The logcial flow is as follows:
 
 Reference: 
 
-https://github.com/DeploymentLive/iPXEBuilder/blob/main/customers/DeploymentLive/Assets/embedded.sh
-https://github.com/ipxe/ipxe/blob/969ce2c559a6841a949a1b73a3967b1889e0c999/src/usr/autoboot.c#L391
+* https://github.com/DeploymentLive/iPXEBuilder/blob/main/customers/DeploymentLive/Assets/embedded.sh
+* https://github.com/ipxe/ipxe/blob/969ce2c559a6841a949a1b73a3967b1889e0c999/src/usr/autoboot.c#L391
 
 ## Cloud Operations Guide
 

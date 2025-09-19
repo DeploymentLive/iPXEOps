@@ -19,6 +19,7 @@
     - [Does \*\*Deployment Live iPXE support wireless recovery?](#does-deployment-live-ipxe-support-wireless-recovery)
   - [Licensing Questions](#licensing-questions)
     - [What kind of Licensed versions are there?](#what-kind-of-licensed-versions-are-there)
+    - [Licensing Table:](#licensing-table)
     - [What if I want to develop my own Recovery Solution?](#what-if-i-want-to-develop-my-own-recovery-solution)
   - [Thanks!](#thanks)
   - [More resources](#more-resources)
@@ -200,6 +201,20 @@ These files are public (see above), do not re-distribute, use the links above to
 In addition to the Signed **Public Version** above, this version has full trust with all Mozilla trusted Certificate Authorities, and other enhanced features like Peer to Peer support.
 
 How do you get the **Enterprise Version**? Please contact us for more information info@deploymentlive.com
+
+### Licensing Table:
+
+|Feature                                     |[iPXE](https://ipxe.org) GPL 2.0|Deployment Live</br>Free|Deployment Live</br> **Enterprise**|
+|--------------------------------------------|--------------------|--------------------|------------------------------|
+|Boot from USB,PXE, or HTTPS                 |Yes                 |Yes                 |Yes                           |
+|Download from HTTP                          |Yes                 |Yes                 |Yes                           |
+|Download from TFTP                          |Yes                 |Yes                 |Yes                           |
+|Download from https://deploymentlive.com    |Yes                 |Yes                 |Yes                           |
+|Download from other HTTPS (Full Mozilla CA) |Yes                 |**No  <--**         |Yes                           |
+|Signed with Secure Boot CA Key              |**No  <--**         |Yes                 |Yes                           |
+|Peer to Peer (Branch Cache) Support         |Yes                 |No                  |Yes                           |
+
+* Full Mozilla Trusted CA authority list as found in iPXE.
 
 ### What if I want to develop my own Recovery Solution?
 
