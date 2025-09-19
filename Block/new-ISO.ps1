@@ -11,10 +11,11 @@
 [cmdletbinding()]
 param(
     [switch] $force = $true,
-    [parameter(mandatory=$false)]
-    $path = "$PSScriptRoot\..\..\iPXEBuilder\Build\Block\test1.iso",
+    [parameter(mandatory)]
+    $path,
+    [parameter(mandatory)]
     $files = @(
-        @{ path = "$PSSCriptRoot\..\..\iPXEBuilder\Build\Signed\snp_drv_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+        @{ path = "$PSSCriptRoot\Build\Signed\snp_drv_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
         @{ text = "#!ipxe`r`nset force_filename https://boot.deploymentlive.com:8050/boot/cloudboot.ipxe`r`n";  destination = 'autoexec.ipxe' }
     )
 )

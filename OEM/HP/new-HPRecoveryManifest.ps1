@@ -23,11 +23,11 @@
 [cmdletbinding()]
 param(
     [string] $CertPath = "$PSScriptRoot\..\Certs\",
-    [parameter(mandatory=$false)]
+    [parameter(mandatory=$true)]
     [SecureString] $REPass = $Pass,
     [uint32] $Version = 1,
-    [parameter(mandatory=$false)]
-    [string] $FilePath = 'C:\Users\keith\source\repos\iPXEBuilder\Build\HP'
+    [parameter(mandatory=$true)]
+    [string] $FilePath = 'C:\Users\keith\source\repos\Build\HP'
 )
 
 

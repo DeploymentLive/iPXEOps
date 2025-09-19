@@ -57,20 +57,19 @@ $Control = @{
             destination = "$PSScriptRoot\Build\boot\WinPE\arm64\boot.sdi"
         }
 
-        @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_aa64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_aa64.efi" }
-        @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_aa64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_DRV_aa64.efi" }
-        @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_x64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_DRV_x64.efi" }
-        @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_x64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_x64.efi" }
+        @{ path = "$PSScriptRoot\Build\Signed\snp_CA_aa64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_aa64.efi" }
+        @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_CA_aa64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_DRV_aa64.efi" }
+        @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_CA_x64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_DRV_x64.efi" }
+        @{ path = "$PSScriptRoot\Build\Signed\snp_CA_x64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_x64.efi" }
 
-        @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\UnSigned\snp_aa64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_unsigned_aa64.efi" }
-        @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\UnSigned\snp_DRV_aa64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_DRV_unsigned_aa64.efi" }
-        @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\UnSigned\snp_DRV_x64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_DRV_unsigned_x64.efi" }
-        @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\UnSigned\snp_x64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_unsigned_x64.efi" }
+        @{ path = "$PSScriptRoot\Build\UnSigned\snp_aa64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_unsigned_aa64.efi" }
+        @{ path = "$PSScriptRoot\Build\UnSigned\snp_DRV_aa64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_DRV_unsigned_aa64.efi" }
+        @{ path = "$PSScriptRoot\Build\UnSigned\snp_DRV_x64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_DRV_unsigned_x64.efi" }
+        @{ path = "$PSScriptRoot\Build\UnSigned\snp_x64.efi" ; destination = "$PSScriptRoot\Build\boot\snp_unsigned_x64.efi" }
 
         @{ path = "$PSScriptRoot\github\Crossusertrust.crt"; destination = "$PSScriptRoot\Build\boot\Githubcross.crt" }
         @{ path = "$PSScriptRoot\ipxe\shimx64.efi"; destination = "$PSScriptRoot\Build\boot\shimx64.efi" }
         @{ path = "$PSScriptRoot\ipxe\winpeshl.ini"; destination = "$PSScriptRoot\Build\boot\winpeshl.ini" }
-        @{ path = "$PSScriptRoot\..\iPXEBuilder\customers\DeploymentLive\Certs\ca.crt"; destination = "$PSScriptRoot\Build\boot\ca.crt" }
 
     )
 
@@ -101,126 +100,126 @@ $Control = @{
     ISOImages = @(
 
         @{ Name = 'ProdNETarm64'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXEProdCAServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdUSBarm64'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXEProdCAServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdUSBamd64'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXEProdCAServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdNETamd64'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXEProdCAServer;  destination = 'autoexec.ipxe' }
         )}
 
         @{ Name = 'ProdNETDual'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXEProdCAServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdUSBDual'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXEProdCAServer;  destination = 'autoexec.ipxe' }
         )}
 
         @{ Name = 'ProdNETarm64Paid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdUSBarm64Paid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdUSBamd64Paid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdNETamd64Paid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
 
         @{ Name = 'ProdNETDualPaid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdUSBDualPaid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
 
         @{ Name = 'ProdNETarm64Unsigned'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\UnSigned\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdUSBarm64Unsigned'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\UnSigned\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdUSBamd64Unsigned'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\UnSigned\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'ProdNETamd64Unsigned'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\UnSigned\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXEProdFullServer;  destination = 'autoexec.ipxe' }
         )}
 
         @{ Name = 'TestNETarm64'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXENonProdCAServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'TestUSBarm64'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_CA_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXENonProdCAServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'TestUSBamd64'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXENonProdCAServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'TestNETamd64'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_CA_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXENonProdCAServer;  destination = 'autoexec.ipxe' }
         )}
 
         @{ Name = 'TestNETarm64Paid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXENonProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'TestUSBarm64Paid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXENonProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'TestUSBamd64Paid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXENonProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'TestNETamd64Paid'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\Signed\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXENonProdFullServer;  destination = 'autoexec.ipxe' }
         )}
 
         @{ Name = 'TestNETarm64Unsigned'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\UnSigned\snp_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXENonProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'TestUSBarm64Unsigned'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
+            @{ path = "$PSScriptRoot\Build\UnSigned\snp_DRV_aa64.efi" ; destination = 'EFI\BOOT\BOOTAA64.EFI'}
             @{ text = $iPXENonProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'TestUSBamd64Unsigned'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\UnSigned\snp_DRV_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXENonProdFullServer;  destination = 'autoexec.ipxe' }
         )}
         @{ Name = 'TestNETamd64Unsigned'; files = @(
-            @{ path = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
+            @{ path = "$PSScriptRoot\Build\UnSigned\snp_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
             @{ text = $iPXENonProdFullServer;  destination = 'autoexec.ipxe' }
         )}    
     
@@ -229,44 +228,44 @@ $Control = @{
     HPSureRecoverTargets = @(
 
         # Main Production Use Case using private CA
-        @{ Name = 'Signed_Net_aa64' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_aa64.efi";      Target = $ProdCAServer; Version = $HPVersion }
-        @{ Name = 'Signed_Drv_aa64' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_aa64.efi";  Target = $ProdCAServer; Version = $HPVersion }
-        @{ Name = 'Signed_Drv_x64'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_x64.efi";   Target = $ProdCAServer; Version = $HPVersion }
-        @{ Name = 'Signed_Net_x64'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_x64.efi";       Target = $ProdCAServer; Version = $HPVersion }
-        @{ Name = '.'  ;              Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_x64.efi";       Target = $ProdCAServer; Version = $HPVersion }    # Default 
+        @{ Name = 'Signed_Net_aa64' ; Binary = "$PSScriptRoot\Build\Signed\snp_CA_aa64.efi";      Target = $ProdCAServer; Version = $HPVersion }
+        @{ Name = 'Signed_Drv_aa64' ; Binary = "$PSScriptRoot\Build\Signed\snp_DRV_CA_aa64.efi";  Target = $ProdCAServer; Version = $HPVersion }
+        @{ Name = 'Signed_Drv_x64'  ; Binary = "$PSScriptRoot\Build\Signed\snp_DRV_CA_x64.efi";   Target = $ProdCAServer; Version = $HPVersion }
+        @{ Name = 'Signed_Net_x64'  ; Binary = "$PSScriptRoot\Build\Signed\snp_CA_x64.efi";       Target = $ProdCAServer; Version = $HPVersion }
+        @{ Name = '.'  ;              Binary = "$PSScriptRoot\Build\Signed\snp_CA_x64.efi";       Target = $ProdCAServer; Version = $HPVersion }    # Default 
 
         <#
         # For Full HTTPS Production use with Signed Binaries (Not common)
-        @{ Name = 'Paid_Signed_Net_aa64' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_aa64.efi";     Target = $ProdFullServer; Version = $HPVersion }
-        @{ Name = 'Paid_Signed_Drv_aa64' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_aa64.efi"; Target = $ProdFullServer; Version = $HPVersion }
-        @{ Name = 'Paid_Signed_Drv_x64'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_x64.efi";  Target = $ProdFullServer; Version = $HPVersion }
-        @{ Name = 'Paid_Signed_Net_x64'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_x64.efi";      Target = $ProdFullServer; Version = $HPVersion }
+        @{ Name = 'Paid_Signed_Net_aa64' ; Binary = "$PSScriptRoot\Build\Signed\snp_aa64.efi";     Target = $ProdFullServer; Version = $HPVersion }
+        @{ Name = 'Paid_Signed_Drv_aa64' ; Binary = "$PSScriptRoot\Build\Signed\snp_DRV_aa64.efi"; Target = $ProdFullServer; Version = $HPVersion }
+        @{ Name = 'Paid_Signed_Drv_x64'  ; Binary = "$PSScriptRoot\Build\Signed\snp_DRV_x64.efi";  Target = $ProdFullServer; Version = $HPVersion }
+        @{ Name = 'Paid_Signed_Net_x64'  ; Binary = "$PSScriptRoot\Build\Signed\snp_x64.efi";      Target = $ProdFullServer; Version = $HPVersion }
         #>
 
         # For Full HTTPS by customer in Production Environment, Unsigned Binaries.
-        @{ Name = 'Unsigned_Net_aa64' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_aa64.efi";     Target = $ProdFullServer; Version = $HPVersion }
-        @{ Name = 'Unsigned_Drv_aa64' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_DRV_aa64.efi"; Target = $ProdFullServer; Version = $HPVersion }
-        @{ Name = 'Unsigned_Drv_x64'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_DRV_x64.efi";  Target = $ProdFullServer; Version = $HPVersion }
-        @{ Name = 'Unsigned_Net_x64'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_x64.efi";      Target = $ProdFullServer; Version = $HPVersion }
+        @{ Name = 'Unsigned_Net_aa64' ; Binary = "$PSScriptRoot\Build\UnSigned\snp_aa64.efi";     Target = $ProdFullServer; Version = $HPVersion }
+        @{ Name = 'Unsigned_Drv_aa64' ; Binary = "$PSScriptRoot\Build\UnSigned\snp_DRV_aa64.efi"; Target = $ProdFullServer; Version = $HPVersion }
+        @{ Name = 'Unsigned_Drv_x64'  ; Binary = "$PSScriptRoot\Build\UnSigned\snp_DRV_x64.efi";  Target = $ProdFullServer; Version = $HPVersion }
+        @{ Name = 'Unsigned_Net_x64'  ; Binary = "$PSScriptRoot\Build\UnSigned\snp_x64.efi";      Target = $ProdFullServer; Version = $HPVersion }
 
         # Non-Prod Private CA use using public signed binaries
-        @{ Name = 'Signed_Net_aa64_nonProd' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_aa64.efi";      Target = $NonProdCAServer; Version = $HPVersion }
-        @{ Name = 'Signed_Drv_aa64_nonProd' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_aa64.efi";  Target = $NonProdCAServer; Version = $HPVersion }
-        @{ Name = 'Signed_Drv_x64_nonProd'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_CA_x64.efi";   Target = $NonProdCAServer; Version = $HPVersion }
-        @{ Name = 'Signed_Net_x64_nonProd'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_CA_x64.efi";       Target = $NonProdCAServer; Version = $HPVersion }
+        @{ Name = 'Signed_Net_aa64_nonProd' ; Binary = "$PSScriptRoot\Build\Signed\snp_CA_aa64.efi";      Target = $NonProdCAServer; Version = $HPVersion }
+        @{ Name = 'Signed_Drv_aa64_nonProd' ; Binary = "$PSScriptRoot\Build\Signed\snp_DRV_CA_aa64.efi";  Target = $NonProdCAServer; Version = $HPVersion }
+        @{ Name = 'Signed_Drv_x64_nonProd'  ; Binary = "$PSScriptRoot\Build\Signed\snp_DRV_CA_x64.efi";   Target = $NonProdCAServer; Version = $HPVersion }
+        @{ Name = 'Signed_Net_x64_nonProd'  ; Binary = "$PSScriptRoot\Build\Signed\snp_CA_x64.efi";       Target = $NonProdCAServer; Version = $HPVersion }
 
         # For Full HTTPS in non-Prod environment, not signed
-        @{ Name = 'Unsigned_Net_aa64_nonProd' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_aa64.efi";     Target = $NonProdFullServer; Version = $HPVersion }
-        @{ Name = 'Unsigned_Drv_aa64_nonProd' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_DRV_aa64.efi"; Target = $NonProdFullServer; Version = $HPVersion }
-        @{ Name = 'Unsigned_Drv_x64_nonProd'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_DRV_x64.efi";  Target = $NonProdFullServer; Version = $HPVersion }
-        @{ Name = 'Unsigned_Net_x64_nonProd'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Unsigned\snp_x64.efi";      Target = $NonProdFullServer; Version = $HPVersion }
+        @{ Name = 'Unsigned_Net_aa64_nonProd' ; Binary = "$PSScriptRoot\Build\UnSigned\snp_aa64.efi";     Target = $NonProdFullServer; Version = $HPVersion }
+        @{ Name = 'Unsigned_Drv_aa64_nonProd' ; Binary = "$PSScriptRoot\Build\UnSigned\snp_DRV_aa64.efi"; Target = $NonProdFullServer; Version = $HPVersion }
+        @{ Name = 'Unsigned_Drv_x64_nonProd'  ; Binary = "$PSScriptRoot\Build\UnSigned\snp_DRV_x64.efi";  Target = $NonProdFullServer; Version = $HPVersion }
+        @{ Name = 'Unsigned_Net_x64_nonProd'  ; Binary = "$PSScriptRoot\Build\UnSigned\snp_x64.efi";      Target = $NonProdFullServer; Version = $HPVersion }
 
         <#
         # For Full HTTPS testing in Non-Prod environemnt (Not Common)
-        @{ Name = 'Paid_Signed_Net_aa64_nonProd' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_aa64.efi";     Target = $NonProdFullServer; Version = $HPVersion }
-        @{ Name = 'Paid_Signed_Drv_aa64_nonProd' ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_aa64.efi"; Target = $NonProdFullServer; Version = $HPVersion }
-        @{ Name = 'Paid_Signed_Drv_x64_nonProd'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_DRV_x64.efi";  Target = $NonProdFullServer; Version = $HPVersion }
-        @{ Name = 'Paid_Signed_Net_x64_nonProd'  ; Binary = "$PSScriptRoot\..\iPXEBuilder\Build\Signed\snp_x64.efi";      Target = $NonProdFullServer; Version = $HPVersion }
+        @{ Name = 'Paid_Signed_Net_aa64_nonProd' ; Binary = "$PSScriptRoot\Build\Signed\snp_aa64.efi";     Target = $NonProdFullServer; Version = $HPVersion }
+        @{ Name = 'Paid_Signed_Drv_aa64_nonProd' ; Binary = "$PSScriptRoot\Build\Signed\snp_DRV_aa64.efi"; Target = $NonProdFullServer; Version = $HPVersion }
+        @{ Name = 'Paid_Signed_Drv_x64_nonProd'  ; Binary = "$PSScriptRoot\Build\Signed\snp_DRV_x64.efi";  Target = $NonProdFullServer; Version = $HPVersion }
+        @{ Name = 'Paid_Signed_Net_x64_nonProd'  ; Binary = "$PSScriptRoot\Build\Signed\snp_x64.efi";      Target = $NonProdFullServer; Version = $HPVersion }
         #>
     )
 

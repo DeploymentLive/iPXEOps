@@ -12,7 +12,7 @@
 
 [cmdletbinding()]
 param(
-    [string] $path = "$PSScriptRoot\..\..\ipxeBuilder\Build\Tmp\HPRecovery.ipxe"
+    [string] $path = "$PSScriptRoot\Build\HPRecovery.ipxe"
 )
 
 #region Download Manifest
