@@ -1,20 +1,23 @@
 [cmdletbinding()]
 param( 
-    $SubjectAlternateName = "subjectAltName=DNS.1:*.deploymentlive.com,DNS.2:*.keithga.com"
+    $SubjectAlternateName = "subjectAltName=DNS.1:*.deploymentlive.com",
+    $ServerName = 'aws.deploymentlive.com'
 )
 
-$hostname = $env:computername + '.' + $env:USERDNSDOMAIN
-write-verbose "Hostname: $hostname"
+write-verbose "servername: $servername"
 
 $args = @(
     "req","-newkey","rsa:2048"
-    "-keyout","./$($HostName).key"
-    "-out","./$($HostName).req"
-    "-subj","/CN=$HostName"
+    "-keyout","./$($servername).key"
+    "-out","./$($servername).req"
+    "-subj","/CN=$servername"
     # "-passout","env:KeyPass"
+    "-nodes"
     "-addext",$SubjectAlternateName
     "-batch","-verbose"
 )
 
-& '\\tsclient\c\program files\git\usr\bin\openssl.exe' $args
+echo $args
+& 'openssl.exe' $args
 
+    

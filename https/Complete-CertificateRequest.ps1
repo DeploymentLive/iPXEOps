@@ -15,11 +15,9 @@
 param(
     # [Parameter(mandatory=$false)]
     #[pscredential] $CAPassword,
-    [int] $days = 365,
+    [int] $days = 3650,
     [Parameter(mandatory)]
-    $request,
-    [Parameter(mandatory)]
-    [string] $hostname 
+    $request
 )
 
 #region Initialize 
@@ -49,7 +47,7 @@ email_in_dn     = no            # Don't concat the email in the DN
 copy_extensions = copy          # Required to copy SANs from CSR to cert
 certificate = $scriptroot/../../ipxebuilder/customers/DeploymentLive/certs/ca.crt
 database = $scriptroot/../../ipxebuilder/customers/DeploymentLive/certs/ca.idx
-new_certs_dir = $ScriptRoot/../Build/certs
+new_certs_dir = ./
 serial = $scriptroot/../../ipxebuilder/customers/DeploymentLive/certs/ca.srl
 policy = signing_policy
 
