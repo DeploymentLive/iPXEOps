@@ -6,7 +6,6 @@
 
 set isca DeploymentLive CA
 set ipxeServer ${cwduri}
-set deploymnetliveBlob http://deploymentlivefiles.blob.core.windows.net/ipxebootfiles
 
 if ( certstat -s ${isca} )
 
@@ -96,16 +95,8 @@ sub osdboot
         end if
     end if
 
-
-    set bootwim ${deploymnetliveBlob}/${buildarch}/boot.wim
-    if ( iseq ${buildarch} arm64 )
-        set myhash <# (get-filehash "$TargetDir\winpe.arm64\boot.wim" | % hash).tolower() #>
-    else
-        set myhash <# (get-filehash "$TargetDir\winpe.amd64\boot.wim" | % hash).tolower() #>
-    end if
-
-    initrd -n winpeshl.ini  ${ipxeServer}/winpeshl.ini ||
-    call LoadWinPE ${ipxeServer}/WinPE/${buildarch} ${bootwim} ${myhash}
+    initrd -n winpeshl.ini  ${ipxeServer}winpeshl.txt ||
+    call LoadWinPE ${ipxeServer}winpe/${buildarch} ${ipxeServer}winpe/${buildarch}/boot.wim https
 
 end sub 
 
@@ -123,7 +114,7 @@ sub linuxlive
     # BUGBUG https://github.com/DeploymentLive/iPXEOps/issues/3
     set cmdline ip=${ip}::${gateway}:${netmask}:myclient::off:${dns}
 
-    call LoadLinux ${kernel_url} ${squash_url} ${ipxeServer}/shimx64.efi
+    call LoadLinux ${kernel_url} ${squash_url} ${ipxeServer}shimx64.efi
 
     call SetBackgroundPNG Logo.png
 
@@ -206,7 +197,7 @@ end sub
 
 sub tools_dhcpproxy
 
-    set proxybase ${ipxeServer}/dhcpproxy
+    set proxybase ${ipxeServer}dhcpproxy
     imgfree ||
     kernel ${proxybase}/vmlinuz64 loglevel=3 initrd=initrd.magic ${dhcpproxy_args} ||
     initrd ${proxybase}/tinycore.gz ||
@@ -259,8 +250,7 @@ sub tools_hp
     set HPHash  <# ((type "$TargetDir\recovery.mft" ) -match 'boot.wim').split(' ')[0] #>
     set HPBoot https://ftp.hp.com/pub/pcbios/CPR/sources/boot.wim
 
-    call LoadWinPE ${ipxeServer}/WinPE/${buildarch} ${HPBoot} ${HPHash}
-
+    call LoadWinPE ${ipxeServer}winpe/${buildarch} ${HPBoot} ${HPHash}
 
     chain HPRecovery.ipxe ||
 
@@ -280,7 +270,7 @@ sub osdcloud
     set osdcloud_name Windows-%Rand:5%
     set osdcloud_final reboot
     set osdcloud_version 11
-    set osdcloud_build 24H2
+    set osdcloud_build 25H2
     iseq ${buildarch} arm64 && set osdcloud_arch Arm64 || set osdcloud_arch x64
     set osdcloud_edition Enterprise
     set osdcloud_activate Volume
@@ -392,10 +382,10 @@ sub osd_adv_osver
 
     menu Windows Version
 
+    item win1125H2 Windows 11 25H2 x64
     item win1124H2 Windows 11 24H2 x64
     item win1123H2 Windows 11 23H2 x64
     item win1122H2 Windows 11 22H2 x64
-    item win1121H2 Windows 11 21H2 x64
     item win1022H2 Windows 10 22H2 x64
 
     choose --default win${osdcloud_version}${osdcloud_build} osver ||
@@ -403,10 +393,10 @@ sub osd_adv_osver
     set osdcloud_version 11 ||
     iseq ${osver} win1022H2 && set osdcloud_version 10 || 
 
-    set osdcloud_build 24H2 ||
+    set osdcloud_build 25H2 ||
+    iseq ${osver} win1124H2 && set osdcloud_build 24H2 ||
     iseq ${osver} win1123H2 && set osdcloud_build 23H2 ||
     iseq ${osver} win1122H2 && set osdcloud_build 22H2 ||
-    iseq ${osver} win1121H2 && set osdcloud_build 21H2 ||
     iseq ${osver} win1022H2 && set osdcloud_build 22H2 ||
 
 end sub
@@ -565,28 +555,28 @@ sub osd_adv_install
             echo ${fgred}Aborting installation...${fgdefault}
             return
         end if
-        initrd --name OSDCloud.zti.True.tag winpeshl.ini ||
+        initrd --name OSDCloud.zti.True.tag winpeshl.txt ||
     end if
     
     if ( iseq ${osdcloud_fw} true ) 
-        initrd --name OSDCloud.firmware.true.tag winpeshl.ini ||
+        initrd --name OSDCloud.firmware.true.tag winpeshl.txt ||
     end if
 
     if ( NOT iseq ${osdcloud_language} en-US ) 
-        initrd --name OSDCloud.OSLanguage.${osdcloud_language}.tag winpeshl.ini ||
+        initrd --name OSDCloud.OSLanguage.${osdcloud_language}.tag winpeshl.txt ||
     end if
 
     if ( iseq ${osdcloud_final} reboot )
-        initrd --name OSDCloud.Restart.true.tag winpeshl.ini ||
+        initrd --name OSDCloud.Restart.true.tag winpeshl.txt ||
     end if
 
     if ( iseq ${osdcloud_final} shutdown )
-        initrd --name OSDCloud.Shutdown.true.tag winpeshl.ini ||
+        initrd --name OSDCloud.Shutdown.true.tag winpeshl.txt ||
     end if
 
-    initrd --name OSDCloud.OSName.Windows ${osdcloud_version}${sp}${osdcloud_build}${sp}${osdcloud_arch}.tag winpeshl.ini ||
-    initrd --name OSDCloud.OSEdition.${osdcloud_edition}.tag winpeshl.ini ||
-    initrd --name OSDCloud.OSActivation.${osdcloud_activate}.tag winpeshl.ini ||
+    initrd --name OSDCloud.OSName.Windows ${osdcloud_version}${sp}${osdcloud_build}${sp}${osdcloud_arch}.tag winpeshl.txt ||
+    initrd --name OSDCloud.OSEdition.${osdcloud_edition}.tag winpeshl.txt ||
+    initrd --name OSDCloud.OSActivation.${osdcloud_activate}.tag winpeshl.txt ||
 
     echo ${cls}
 
@@ -691,7 +681,7 @@ sub LoadWinPE
     initrd -n boot.sdi      ${WinPERoot}/boot.sdi     ||
     initrd -n boot.wim      ${arg2}  ||
 
-    if ( NOT iseq ${arg3} "https" )
+    if ( NOT iseq ${arg3} https )
         echo ${fgcyan}${arg3} ${fgdefault} Signature Check ...
         sha256sum boot.wim ||
         if ( NOT sha256sum -s ${arg3} boot.wim )

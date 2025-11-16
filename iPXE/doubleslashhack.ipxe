@@ -1,0 +1,9 @@
+#!ipxe
+
+# Copyright Deployment Live LLC, All Rights Reserved
+
+# Hack for aws /boot//cloudboot.ipxe to /boot/cloudboot.ipxe
+
+# Write-S3object -BucketName deploymentliveweb -file .\iPXE\doubleslashhack.ipxe -key 'boot//cloudboot.ipxe' -region 'us-east-2'
+
+chain cloudboot.ipxe

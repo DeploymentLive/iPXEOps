@@ -22,7 +22,7 @@
 #######################################################
 # Boot to the cloud
 
-chain https://boot.deploymentlive.com:8050/boot/cloudboot.ipxe ||
-chain https://ops.deploymentlive.com/boot/cloudboot.ipxe ||
+chain https://aws.deploymentlive.com/boot/cloudboot.ipxe ||
+chain https://web.deploymentlive.com/boot/cloudboot.ipxe ||
 echo Did not boot
 shell

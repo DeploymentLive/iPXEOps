@@ -21,7 +21,8 @@ param(
     [hashtable[]] $HPSureRecoverTargets,
     [hashtable[]] $iPXEFiles,
     [hashtable[]] $BootFiles,
-    [hashtable[]] $ISOImages
+    [hashtable[]] $ISOImages,
+    [hashtable[]] $AWSTargets
 )
 
 if ( $PSBoundParameters.count -eq 0 ) { throw "Missing Args" }
@@ -201,16 +202,9 @@ if ( -not ( test-path "$TargetDir\recovery.mft" ) ) {
 if ( ( -not ( test-path $WinPESrc.arm64 ) ) -or ( -not ( test-path $WinPESrc.amd64 ) ) ) {
     throw "Full WinPE Build"
     import-module osd.workspace -force
-    #Build-OSDWorkspaceWinPE -name "MyBootMedia" -Architecture amd64
-    #Build-OSDWorkspaceWinPE -Name "MyBootMedia" -Architecture arm64
+    Build-OSDWorkspaceWinPE -name "MyBootMedia" -Architecture amd64
+    Build-OSDWorkspaceWinPE -Name "MyBootMedia" -Architecture arm64
 }
-
-new-item -itemtype Directory -path "$TargetDir\WinPE.arm64","$TargetDir\WinPE.amd64" -force | write-verbose
-copy-ifnewer $WinPESrc.arm64 -Destination "$TargetDir\WinPE.arm64\boot.wim"
-copy-ifnewer $WinPESrc.amd64 -Destination "$TargetDir\WinPE.amd64\boot.wim"
-
-write-verbose "Copy to Azure if necessary"
-& "$ScriptRoot\tools\Upload-Blob.ps1" "$TargetDir\WinPE.amd64\boot.wim","$TargetDir\WinPE.arm64\boot.wim"
 
 #endregion
 
@@ -231,7 +225,7 @@ if ( -not ( test-path "$TargetDir\boot\winpe\arm64\wimboot" ) ) {
 
 #region Build DHCP Proxy
 
-if ( -not ( test-path \\wsl.localhost\ubuntu\tmp\tclbuild\tinycore.gz ) ) {
+if ( -not ( test-path $TargetDir\boot\dhcpproxy\tinycore.gz ) ) {
     write-verbose "Full TCL PRoxy Server rebuild"
     & "$ScriptRoot\dhcpproxy\build-TCLProxyServer.ps1"
 }
@@ -285,7 +279,6 @@ foreach ( $WinPEFile in $ExtraFiles ) {
 
 #endregion
 
-
 ################################################################
 
 #region Copy Builds to Targets
@@ -305,6 +298,12 @@ foreach ( $Machine in $TargetMachines ) {
     foreach ( $dir in @('boot','Block','HP') ) {
         robocopy /mir /np /ndl /xx /ipg:1 "$TargetDir\$Dir" "$($Machine.TargetFolder)\$Dir" /xf *Paid* /xd *PAID* | write-verbose
     }
+}
+
+
+foreach ( $Target in $AWSTargets ) {
+    "Upload to S3 Bucket: $($Target.S3BucketName)" | write-warning
+    & "$PSScriptRoot\Tools\Upload-S3Objects.ps1" -path $Target.SourcePath -S3BucketName $Target.S3BucketName -S3Prefix $Target.S3Prefix -S3Region $Target.S3Region
 }
 
 #endregion
