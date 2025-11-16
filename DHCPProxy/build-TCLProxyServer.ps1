@@ -41,8 +41,8 @@ param (
 
         ),
     $OtherFiles = @(
-        @{ path = "$PSScriptRoot\build\signed\snp_CA_x64.efi" ; dest = '/tftpboot/snp_x64.efi' }
-        @{ path = "$PSScriptRoot\build\signed\snp_CA_aa64.efi" ; dest = '/tftpboot/snp_aa64.efi' }
+        @{ path = "$PSScriptRoot\..\build\signed\snp_CA_x64.efi" ; dest = '/tftpboot/snp_x64.efi' }
+        @{ path = "$PSScriptRoot\..\build\signed\snp_CA_aa64.efi" ; dest = '/tftpboot/snp_aa64.efi' }
         @{ path =     "$PSScriptRoot/dnsmasq.conf" ; dest = '/etc/dnsmasq.conf' }
         @{ path =     "$PSScriptRoot/bootsync.sh" ; dest = '/opt/bootsync.sh' }
         @{ path =     "$PSScriptRoot/menu.sh" ; dest = '/usr/bin/menu.sh' }
