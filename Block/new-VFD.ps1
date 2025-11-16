@@ -20,7 +20,7 @@ param(
     $path,
     $files = @(
         @{ path = "$PSSCriptRoot\Build\Signed\snp_drv_x64.efi" ; destination = 'EFI\BOOT\BOOTX64.EFI'}
-        @{ text = "#!ipxe`r`nset force_filename https://boot.deploymentlive.com:8050/boot/cloudboot.ipxe`r`n";  destination = 'autoexec.ipxe' }
+        @{ text = "#!ipxe`r`nset force_filename https://aws.deploymentlive.com/boot/cloudboot.ipxe`r`n";  destination = 'autoexec.ipxe' }
     )
 )
 

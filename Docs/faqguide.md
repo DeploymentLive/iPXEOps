@@ -91,7 +91,7 @@ However, sometimes when iPXE initializes the USB bus, it looses connectivity wit
 |https://www.deploymentlive.com/Boot/snp_x64.efi|Signed x64 iPXE file for Built in Ethernet|
 |https://www.deploymentlive.com/Boot/snp_aa64.efi|Signed arm64 iPXE file for Built in Ethernet|
 
-If booting from HTTPS, you may wish to use the CA.crt below, and the URL: https://boot.deploymentlive.com:8050/... 
+If booting from HTTPS, you may wish to use the CA.crt below, and the URL: https://aws.deploymentlive.com/... 
 
 #### HP Boot Files
 

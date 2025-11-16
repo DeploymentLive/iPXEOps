@@ -163,7 +163,7 @@ the era of true network recovery is here.
 ### The Fine Print...
 
 There is one caveat, the **Deployment Live iPXE** secure-boot signed binaries will only trust the **Deployment Live CA** HTTPS TLS/SSL Certificate. 
-This allows us to connect to the https://boot.deploymentlive.com:8050 site and a few others, but no other HTTPS encrypted sites are supported.
+This allows us to connect to the https://aws.deploymentlive.com site and a few others, but no other HTTPS encrypted sites are supported.
 
 This shouldn't be a problem if you are running internally, on a private network, just connect to your un-encrypted HTTP web server. 
 
@@ -171,7 +171,7 @@ The Free version of **Deployment Live iPXE** is not intended to connect up to ot
 
 ## What if I want to do more
 
-In practical terms, iPXE can be use to connect to the public https://boot.deploymentlive.com:8050 site with encrypted HTTPS, 
+In practical terms, iPXE can be use to connect to the public https://aws.deploymentlive.com site with encrypted HTTPS, 
 but if you want to do more then you may need your site trusted with Deployment Live free version, or our Enterprise version. 
 Please contact us at info@deploymentlive.com
 

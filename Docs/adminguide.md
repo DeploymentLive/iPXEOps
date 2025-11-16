@@ -63,7 +63,7 @@ However, there are some Notes:
 The Free version of Deployment Live iPXE only trusts one CA TLS/SSL certificate for HTTPS communications, This CA is manged by Deployment Live LLC. https://www.deploymentlive.com/boot/ca.crt
 
 Notes:
-* https://boot.deploymentlive.com:8050 has been setup as a web service bound to this certificate.
+* https://aws.deploymentlive.com has been setup as a web service bound to this certificate.
 * You can also load this Certificate Authorith on UEFI machines that support HTTPS booting. (More on this later)
 * This certificate does not block communication using DeploymentLive iPXE TFTP or HTTP.
 * Once Deployment Live iPXE has passed control to either Windows PE or Linux Live, we no longer need the certificate, and can use regular HTTPS on port 443 for full communication. 
@@ -98,7 +98,7 @@ What's important to note is that you need to specify two DHCP `filename` values.
 * While the machine is first booting, you will want the DHCP Server to point to our `snp_x64.efi` or `snp_aa64.efi` file.
 * Then while Deployment Live iPXE is running, it will send out **another** DHCP request ( this time with DHCP option 175, and user_class = 'ipxe' ), so now is the time to return the path to our ipxe control script in the `filename` value. 
 
-The official entrypoint for free version of `Deployment Live iPXE` is `https://boot.deploymentlive.com:8050/boot/cloudboot.ipxe`
+The official entrypoint for free version of `Deployment Live iPXE` is `https://aws.deploymentlive.com/boot/cloudboot.ipxe`
 
 Dnsmasq example:
 ```

@@ -20,7 +20,7 @@ param(
     [parameter(mandatory=$false)]
     [SecureString] $SKPass = $Pass,
     [parameter(mandatory=$false)]
-    [string] $url = 'https://boot.deploymentlive.com/hp',
+    [string] $url = 'https://web.deploymentlive.com/hp',
     [hashtable] $OptionalArgs = ( @{ version = 1 } )
 )
 

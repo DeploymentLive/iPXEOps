@@ -17,12 +17,12 @@ param( )
 
 $HPVersion = '3'
 
-$ProdCAServer = 'https://Boot.deploymentlive.com:8050/boot/cloudboot.ipxe'
+$ProdCAServer = 'https://aws.deploymentlive.com/boot/cloudboot.ipxe'
 $ProdFullServer = 'https://ops.deploymentlive.com/boot/cloudboot.ipxe'
 $NonProdCAServer = 'https://Lab.deploymentlive.com:8050/boot/cloudboot.ipxe'
 $NonProdFullServer = 'https://Lab.deploymentlive.com/boot/cloudboot.ipxe'
 
-$iPXEProdCAServer = "#!ipxe`r`nset force_filename " + 'https://Boot.deploymentlive.com:8050/boot/cloudboot.ipxe' + "`r`n"
+$iPXEProdCAServer = "#!ipxe`r`nset force_filename " + 'https://aws.deploymentlive.com/boot/cloudboot.ipxe' + "`r`n"
 $iPXEProdFullServer = "#!ipxe`r`nset force_filename " + 'https://ops.deploymentlive.com/boot/cloudboot.ipxe' + "`r`n"
 $iPXENonProdCAServer = "#!ipxe`r`nset force_filename " + 'https://Lab.deploymentlive.com:8050/boot/cloudboot.ipxe' + "`r`n"
 $iPXENonProdFullServer = "#!ipxe`r`nset force_filename " + 'https://Lab.deploymentlive.com/boot/cloudboot.ipxe' + "`r`n"

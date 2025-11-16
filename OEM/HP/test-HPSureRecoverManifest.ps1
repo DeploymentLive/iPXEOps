@@ -1,6 +1,6 @@
 [CmdletBinding()]
 Param(
-    $url = 'http://boot.deploymentlive.com/boot/hp'
+    $url = 'http://web.deploymentlive.com/boot/hp'
 )
 
 Invoke-WebRequest -Uri "$URL/recovery.mft" -OutFile $env:temp\Recovery.mft

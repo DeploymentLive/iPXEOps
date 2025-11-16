@@ -34,8 +34,8 @@ save
 Download the kpxe image for netboot.xyz and set the permissions properly:
 
 ```
-sudo curl -o /config/user-data/tftproot/snp_x64.efi https://boot.deploymentlive.com/boot/snp_x64.efi
-sudo curl -o /config/user-data/tftproot/snp_aa64.efi https://boot.deploymentlive.com/boot/snp_aa64.efi
+sudo curl -o /config/user-data/tftproot/snp_x64.efi https://web.deploymentlive.com/boot/snp_x64.efi
+sudo curl -o /config/user-data/tftproot/snp_aa64.efi https://web.deploymentlive.com/boot/snp_aa64.efi
 sudo chmod ugo+r /config/user-data/tftproot/snp_*.efi
 ```
 
@@ -60,7 +60,7 @@ set service dns forwarding options "dhcp-boot=tag:efix64,snp_x64.efi,,10.10.2.1"
 set service dns forwarding options "dhcp-match=set:efia64,60,PXEClient:Arch:00011"
 set service dns forwarding options "dhcp-boot=tag:efiaq64,snp_aa64.efi,,10.10.2.1"
 set service dns forwarding options "dhcp-match=set:ipxe,175"
-set service dns forwarding options "dhcp-boot=tag:ipxe,https://boot.deploymentlive.com:8050/boot/cloudboot.ipxe"
+set service dns forwarding options "dhcp-boot=tag:ipxe,https://aws.deploymentlive.com/boot/cloudboot.ipxe"
 
 commit; save
 ```

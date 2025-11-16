@@ -14,7 +14,7 @@ param(
     $TFTPServer = '10.0.0.7',
 
     [parameter(mandatory)]
-    $iPXEScript = 'https://boot.deploymentlive.com:8050/boot/cloudboot.ipxe'
+    $iPXEScript = 'https://aws.deploymentlive.com/boot/cloudboot.ipxe'
 )
 
 Import-Module DhcpServer -ErrorAction SilentlyContinue

@@ -6,4 +6,4 @@
 # When booting from USB, set the name of the iPXE server.
 #
 
-set force_filename https://boot.deploymentlive.com:8050/boot/cloudboot.ipxe
+set force_filename https://aws.deploymentlive.com/boot/cloudboot.ipxe

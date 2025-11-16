@@ -41,7 +41,7 @@ Adjust Bindings in IIS to use the new Certificate and Private Key.
 The ca.crt file is copied to a USB key and installed on a machine using Firmware Setup.
 Along with the HTTPS URL for connecting back to the HTTPS server.
 
-Example: https://boot.deploymentlive.com:8050/boot/snp_x64.efi
+Example: https://aws.deploymentlive.com/boot/snp_x64.efi
 
 You should now be able to HTTPS Boot.
 
